@@ -1,3 +1,4 @@
+"use client"
 import styles from "@/styles/style";
 import { logo } from "@/public/assets";
 import { footerLinks, socialMedia } from "@/constants";
@@ -46,15 +47,19 @@ const Footer: React.FC = () => (
         2024&nbsp; Andreea Mocan.&nbsp;  All Rights Reserved.
       </p>
       <div className="flex flex-row md:mt-0 mt-6">
-        {socialMedia.map((social, index) => (
-          <Image
-            src={social.icon}
-            key={social.id}
-            alt={social.id}
-            className={`w-[21px] h-[21px] object-contain cursor-pointer ${index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
-              }`}
-          />
-        ))}
+      {socialMedia.map((social, index) => (
+    <a 
+    href={social.link} 
+    key={social.id} 
+    target="_blank" 
+    rel="noopener noreferrer">
+      <Image
+        src={social.icon}
+        alt={social.id}
+        className={`w-[21px] h-[21px] object-contain cursor-pointer ${index !== socialMedia.length - 1 ? "mr-6" : "mr-0"}`}
+      />
+    </a>
+  ))}
       </div>
     </div>
   </section>

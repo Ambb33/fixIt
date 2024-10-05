@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import styles from "@/styles/style";
 import { Navbar, Hero, Stats, Business, Billing, CardDeal, Testimonials, Clients, CTA, Footer } from "@/components"
+import React from 'react';
 const Home: React.FC = () => {
   const [showButton, setShowButton] = useState(false);
 
@@ -53,7 +54,7 @@ const Home: React.FC = () => {
       {showButton && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-10 right-10 p-3 bg-navcolor text-white rounded-full shadow-lg hover:bg-secondary transition duration-300"
+          className="fixed bottom-1 right-10 p-3 bg-navcolor text-white rounded-full shadow-lg hover:bg-secondary transition duration-300"
         >
           ↑
         </button>
