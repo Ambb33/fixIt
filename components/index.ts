@@ -1,3 +1,4 @@
+//this will ensure that the navbar goes to the right section 
 import Navbar from "./Navbar";
 import Billing from "./Billing";
 import CardDeal from "./CardDeal";

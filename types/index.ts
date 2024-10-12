@@ -6,8 +6,9 @@ export interface FeatredCardProps {
 }
 
 export interface ButtonProps {
-    styles?: string;
-}
+    styles: string;
+    toggleVisibility: () => void;
+}  
 
 export interface FeedBackProps {
     content: string;

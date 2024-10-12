@@ -1,8 +1,9 @@
 "use client"
 import { useState, useEffect } from 'react';
 import styles from "@/styles/style";
-import { Navbar, Hero, Stats, Business, Billing, CardDeal, Testimonials, Clients, CTA, Footer } from "@/components"
+import { Hero, Stats, Business, Billing, CardDeal, Testimonials, Clients, CTA, Footer, Navbar } from "@/components"
 import React from 'react';
+
 const Home: React.FC = () => {
   const [showButton, setShowButton] = useState(false);
 
@@ -27,12 +28,6 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <div className="bg-primary w-full overflow-hidden">
-        <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-          <div className={`${styles.boxWidth}`}>
-            <Navbar />
-          </div>
-        </div>
         <div className={`bg-primary ${styles.flexStart}`}>
           <div className={`${styles.boxWidth}`}>
             <Hero />
@@ -44,19 +39,19 @@ const Home: React.FC = () => {
             <Business />
             <Billing />
             <CardDeal />
-            <Testimonials />
+           
+            {/* <Testimonials/> */}
             {/* <Clients /> */}
-            <CTA />
-            <Footer />
+             <CTA />            
           </div>
         </div>
-      </div>
+     
       {showButton && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-1 right-10 p-3 bg-navcolor text-white rounded-full shadow-lg hover:bg-secondary transition duration-300"
+          className="fixed bottom-1 right-10 p-2 bg-navcolor text-white rounded shadow-lg hover:bg-secondary transition duration-300"
         >
-          ↑
+          Top
         </button>
       )}
     </>

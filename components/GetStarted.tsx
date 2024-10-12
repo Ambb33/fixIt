@@ -1,3 +1,5 @@
+//this is the button on the top of the page
+
 import styles from '@/styles/style';
 import { arrowUp } from '@/public/assets';
 import Image from 'next/image';

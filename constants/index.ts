@@ -1,4 +1,4 @@
-import { people01, people02, people03, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star } from "@/public/assets";
+import { people01, people02, people03, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star, discount} from "@/public/assets";
 
 export const navLinks = [
     {
@@ -14,8 +14,8 @@ export const navLinks = [
         title: "Service",
     },
     {
-        id: "clients",
-        title: "Clients",
+        id: "CTA",
+        title: "Contact",
     },
 ];
 
@@ -91,28 +91,26 @@ export const stats = [
 export const footerLinks = [
     {
         id: "footerLinks-1",
-        title: "Useful Links",
+        title: "Fix It!",
         links: [
             {
-                name: "Content",
-                link: "https://www.hoobank.com/content/",
+                name: "business address",
+                link: "https://maps.app.goo.gl",
+        
             },
             {
-                name: "How it Works",
+                name: "GSM",
                 link: "https://www.hoobank.com/how-it-works/",
             },
             {
-                name: "Create",
+                name: "business ",
                 link: "https://www.hoobank.com/create/",
             },
             {
-                name: "Explore",
+                name: "btw nummer here ",
                 link: "https://www.hoobank.com/explore/",
             },
-            {
-                name: "Terms & Services",
-                link: "https://www.hoobank.com/terms-and-services/",
-            },
+           
         ],
     },
     {
@@ -176,7 +174,7 @@ export const socialMedia = [
     {
         id: "social-media-4",
         icon: linkedin,
-        link: "https://www.linkedin.com/",
+        link: "https://www.linkedin.com",
     },
 ];
 
@@ -198,3 +196,29 @@ export const clients = [
         logo: dropbox,
     },
 ];
+
+// top page intro and discounts
+export const heroData = {
+    discountMessage: {
+      icon: discount,
+      text: " Discount For Your First Service!",
+      highlight: "20%"
+    },
+    heading: "Tech Support Solutions",
+    subheading: "Our dedicated team delivers next-generation tech support solutions directly to our clients. We focus on your unique needs and preferences, ensuring you receive expert assistance for all your devices."
+  };
+  
+  export const billingText = {
+    heading: "Seamlessly access your tech support & repair services.",
+    paragraph: "Experience unparalleled service with our expert team. We specialize in providing comprehensive tech support tailored to your needs. From troubleshooting to repairs, we ensure that your technology runs smoothly, allowing you to focus on what matters most.",
+  };
+  
+  export const cardDealText = {
+    heading: "Find the best tech support solutions in just a few easy steps.",
+    paragraph: "Our expert team is here to assist you, ensuring a seamless experience tailored to your needs. Let us handle your tech challenges so you can focus on what matters most.",
+  };
+
+  export const businessText = {
+    heading: "You take care of your daily life, and we’ll take care of your tech.",
+    paragraph: "With our dedicated support, you can enjoy peace of mind knowing your devices are in expert hands. Whether it's troubleshooting, repairs, or setup, we simplify technology for you, so you can focus on what matters most.",
+  };
