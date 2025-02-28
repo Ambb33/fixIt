@@ -6,6 +6,8 @@ const nextConfig = {
   trailingSlash: true,
   compress: true,
   poweredByHeader: false,
+  useFileSystemPublicRoutes: false,
+
   // distDir: "build",
 
   webpack: (config) => {
