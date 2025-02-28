@@ -1,3 +1,5 @@
+const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
+
 const nextConfig = {
   output: "standalone",
   reactStrictMode: true,
@@ -7,23 +9,22 @@ const nextConfig = {
   distDir: "build",
 
   webpack: (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-    };
-
+    config.resolve.alias = { ...config.resolve.alias };
     config.resolve.symlinks = false;
     config.resolve.aliasFields = ["browser"];
-
-    // ✅ Enforce case-sensitive imports (Windows IIS is case-insensitive)
     config.resolve.modules = [__dirname, "node_modules"];
-    config.resolve.enforceExtension = false;
 
-    // ✅ Add a plugin to detect case-sensitivity issues
-    const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
+    // ✅ Enforce strict case-sensitive file paths
     config.plugins.push(new CaseSensitivePathsPlugin());
 
     return config;
   },
+
+  // ✅ Disable file-system-based caching in IIS (fixes case-sensitivity issue)
+  experimental: {
+    disableOptimizedLoading: true,
+  },
 };
 
 module.exports = nextConfig;
+
