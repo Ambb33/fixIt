@@ -6,7 +6,7 @@ const nextConfig = {
   trailingSlash: true,
   compress: true,
   poweredByHeader: false,
-  distDir: "build",
+  // distDir: "build",
 
   webpack: (config) => {
     config.resolve.alias = { ...config.resolve.alias };
@@ -20,10 +20,10 @@ const nextConfig = {
     return config;
   },
 
-  // ✅ Disable file-system-based caching in IIS (fixes case-sensitivity issue)
-  experimental: {
-    disableOptimizedLoading: true,
-  },
+  // // ✅ Disable file-system-based caching in IIS (fixes case-sensitivity issue)
+  // experimental: {
+  //   disableOptimizedLoading: true,
+  // },
 };
 
 module.exports = nextConfig;

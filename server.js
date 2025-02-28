@@ -1,7 +1,7 @@
 const express = require('express');
 const next = require('next');
 
-const port = process.env.PORT || 3000; // ✅ Ensure a default port
+const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -13,10 +13,10 @@ app.prepare().then(() => {
   server.use(express.json());
   server.use(express.urlencoded({ extended: true }));
 
-  // ✅ Example custom route
-  server.get('/custom', (req, res) => {
-    return app.render(req, res, '/customPage', req.query);
-  });
+  // // ✅ Example custom route
+  // server.get('/custom', (req, res) => {
+  //   return app.render(req, res, '/customPage', req.query);
+  // });
 
   // ✅ Handle all other routes with Next.js
   server.all('*', (req, res) => {
