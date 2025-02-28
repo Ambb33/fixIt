@@ -5,6 +5,7 @@ const nextConfig = {
     trailingSlash: true, // Ensures proper routing with static files
     compress: true, // Enables gzip compression
     poweredByHeader: false, // Removes 'X-Powered-By: Next.js' header for security
+    // distDir: 'build', // Set custom build directory
   
     webpack: (config) => {
       config.resolve.alias = {
