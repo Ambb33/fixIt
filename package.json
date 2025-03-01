@@ -2,10 +2,11 @@
   "name": "hoobnk",
   "version": "0.1.0",
   "private": true,
+  "type":"module",
   "scripts": {
-    "dev": "node server.js",
-    "build": "next build && node server.js",
-    "start": "node server.js",
+    "dev": "node server.mjs",
+    "build": "next build ",
+    "start": "node server.mjs",
     "lint": "next lint"
   },
   "dependencies": {
