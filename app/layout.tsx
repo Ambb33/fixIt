@@ -4,10 +4,11 @@ import styles from "@styles/style";
 
 export const metadata = {
   title: "fixIt",
-  description: "Fix It! offers fast, reliable computer repair and technical support for private clients. From troubleshooting to network setups, we provide personalized tech solutions you can trust.",
+  description:
+    "Fix It! offers fast, reliable computer repair and technical support for private clients. From troubleshooting to network setups, we provide personalized tech solutions you can trust.",
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode; }) => {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <head>
@@ -19,7 +20,8 @@ const RootLayout = ({ children }: { children: React.ReactNode; }) => {
           <Navbar />
           <div className={`bg-primary ${styles.flexStart}`}>
             <div className={`${styles.boxWidth}`}>
-              {children}
+              {/* Ensure that children are properly rendered */}
+              {children || "No content available"}
             </div>
           </div>
           <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>

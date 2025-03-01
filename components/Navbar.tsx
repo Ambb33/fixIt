@@ -1,5 +1,6 @@
 "use client";
-import { useState, useEffect, Dispatch, SetStateAction } from 'react';
+
+import { useState, useEffect } from 'react';
 import { close, logo, menu } from "@/public/assets";
 import { navLinks } from "@/constants";
 import Image from 'next/image';
@@ -11,9 +12,13 @@ const Navbar: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isScrollingUp, setIsScrollingUp] = useState(false);
+  const [isClient, setIsClient] = useState(false); // State to track if the component is mounted
   const controls = useAnimation();
 
   useEffect(() => {
+    // Set isClient to true after the component is mounted on the client
+    setIsClient(true);
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       if (currentScrollY <= 50) {
@@ -39,14 +44,23 @@ const Navbar: React.FC = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('mousemove', handleMouseMove);
+    if (isClient) {
+      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('mousemove', handleMouseMove);
+    }
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('mousemove', handleMouseMove);
+      if (isClient) {
+        window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('mousemove', handleMouseMove);
+      }
     };
-  }, [lastScrollY, isScrollingUp, controls]);
+  }, [lastScrollY, isScrollingUp, controls, isClient]); // Added isClient to ensure client-side rendering
+
+  // Only render the navbar after the component has mounted on the client
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <div className="relative">
@@ -77,7 +91,7 @@ const Navbar: React.FC = () => {
             ))}
           </ul>
         </div>
-        <div className="sm:hidden flex flex-row items-center  relative">
+        <div className="sm:hidden flex flex-row items-center relative">
           <Image 
             src={toggle ? close : menu}
             alt="menu"

@@ -6,7 +6,7 @@ const nextConfig = {
   trailingSlash: true,
   compress: true,
   poweredByHeader: false,
-  useFileSystemPublicRoutes: false,
+  // useFileSystemPublicRoutes: false,//do not use this it will not allow the page to render !!!!
 
   // distDir: "build",
 

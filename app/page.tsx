@@ -1,13 +1,18 @@
-"use client"
-import { useState, useEffect } from 'react';
+"use client";
+import { useState, useEffect } from "react";
 import styles from "@/styles/style";
-import { Hero, Stats, Business, Billing, CardDeal, Testimonials, Clients, CTA, Footer, Navbar } from "@/components"
-import React from 'react';
+import { Hero, Stats, Business, Billing, CardDeal, CTA } from "../components";
 
 const Home: React.FC = () => {
   const [showButton, setShowButton] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isClient) return;
     const handleScroll = () => {
       if (window.scrollY > 300) {
         setShowButton(true);
@@ -16,36 +21,38 @@ const Home: React.FC = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [isClient]);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  if (!isClient) {
+    return null; // Prevent SSR rendering of this component
+  }
 
   return (
     <>
-        <div className={`bg-primary ${styles.flexStart}`}>
-          <div className={`${styles.boxWidth}`}>
-            <Hero />
-          </div>
+      <div className={`bg-primary ${styles.flexStart}`}>
+        <div className={`${styles.boxWidth}`}>
+          <Hero />
         </div>
-        <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>
-          <div className={`${styles.boxWidth}`}>
-            <Stats />
-            <Business />
-            <Billing />
-            <CardDeal />
-           
-            {/* <Testimonials/> */}
-            {/* <Clients /> */}
-             <CTA />            
-          </div>
+      </div>
+      <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>
+        <div className={`${styles.boxWidth}`}>
+          <Stats />
+          <Business />
+          <Billing />
+          <CardDeal />
+          <CTA />
         </div>
-     
+      </div>
+
       {showButton && (
         <button
           onClick={scrollToTop}
@@ -55,7 +62,7 @@ const Home: React.FC = () => {
         </button>
       )}
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
