@@ -1,5 +1,4 @@
 import styles from "@/styles/style";
-import ToggleButtonContact from "./ToggleButton";
 import ContactWrapper from "./ContactWrapper";
 const CTA: React.FC = () => (
     <section id="CTA"

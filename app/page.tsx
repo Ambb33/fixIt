@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import styles from "@/styles/style";
-import { Hero, Stats, Business, Billing, CardDeal, CTA } from "../components";
+import { Hero, Stats, Business, Billing, CardDeal, CTA } from "@/components";
 
 const Home: React.FC = () => {
   const [showButton, setShowButton] = useState(false);

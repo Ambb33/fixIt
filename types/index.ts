@@ -1,4 +1,4 @@
-export interface FeatredCardProps {
+export interface FeaturedCardProps {
     icon: string;
     title: string;
     content: string;

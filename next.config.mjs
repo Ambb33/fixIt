@@ -20,7 +20,7 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://fixit.ambeautyboutique.com/api/:path*', // Replace with actual backend URL
+        destination: 'http://fix.ambeautyboutique.com/api/:path*', // Replace with actual backend URL
       },
     ];
   },

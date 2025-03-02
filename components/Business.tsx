@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import styles, { layout } from "@/styles/style";
 import { features, businessText } from "@/constants";
 import Image from "next/image";
-import { FeatredCardProps } from "@types";
+import { FeaturedCardProps } from "@types";
 import ContactWrapper from "./ContactWrapper";
 
-interface FeatureCardProps extends FeatredCardProps {
+interface FeatureCardProps extends FeaturedCardProps {
   index: number;
 }
 

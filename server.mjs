@@ -4,7 +4,7 @@ import next from 'next';
 import express from 'express';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 
-const port = parseInt(process.env.PORT || '3000', 10);
+const port = process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -14,7 +14,7 @@ app.prepare().then(() => {
 
   // Proxy API requests
   server.use('/api', createProxyMiddleware({
-    target: 'http://fixit.ambeautyboutique.com',
+    target: 'http://fix.ambeautyboutique.com',
     changeOrigin: true,
     logLevel: 'debug'  // Add this line to enable logging for the proxy
   }));

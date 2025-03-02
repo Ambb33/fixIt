@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ButtonProps } from "@types";
 import ContactForm from './ContactForm';
 
-const Contact: React.FC<ButtonProps> = ({ styles }) => {
+const Contact: React.FC<ButtonProps> = ({ }) => {
   
   return (
     <div className="w-full p-6 ">
