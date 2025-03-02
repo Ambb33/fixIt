@@ -6,24 +6,24 @@ const nextConfig = {
   trailingSlash: true,
   compress: true,
   poweredByHeader: false,
-  // useFileSystemPublicRoutes: false,//do not use this it will not allow the page to render !!!!
-
-  // distDir: "build",
-
   webpack: (config) => {
     config.resolve.alias = { ...config.resolve.alias };
     config.resolve.symlinks = false;
-    config.resolve.modules = [ 'node_modules'];
+    config.resolve.modules = ['node_modules'];
 
-    // ✅ Enforce strict case-sensitive file paths
+    // Enforce strict case-sensitive file paths
     config.plugins.push(new CaseSensitivePathsPlugin());
 
     return config;
   },
-
-  // experimental: {
-  //   disableOptimizedLoading: true,
-  // },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://fixit.ambeautyboutique.com/api/:path*', // Replace with actual backend URL
+      },
+    ];
+  },
 };
 
 export default nextConfig;

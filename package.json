@@ -2,7 +2,7 @@
   "name": "hoobnk",
   "version": "0.1.0",
   "private": true,
-  "type":"module",
+  "type": "module",
   "scripts": {
     "dev": "node server.mjs",
     "build": "next build ",
@@ -19,6 +19,7 @@
     "autoprefixer": "10.4.14",
     "express": "^4.21.2",
     "framer-motion": "^11.11.7",
+    "http-proxy-middleware": "^3.0.3",
     "next": "^15.2.0",
     "nodemailer": "^6.9.15",
     "postcss": "8.4.24",
