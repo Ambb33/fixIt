@@ -1,12 +1,12 @@
 import "@/styles/globals.css";
 import ClientRoot from "@/ClientRoot";
-import { Metadata } from "next";
+// import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "fixIt",
-  description:
-    "Fix It! offers fast, reliable computer repair and technical support for private clients. From troubleshooting to network setups, we provide personalized tech solutions you can trust.",
-};
+// export const metadata: Metadata = {
+//   title: "fixIt",
+//   description:
+//     "Fix It! offers fast, reliable computer repair and technical support for private clients. From troubleshooting to network setups, we provide personalized tech solutions you can trust.",
+// };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
