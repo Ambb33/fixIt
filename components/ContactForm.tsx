@@ -1,16 +1,18 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button } from "@mui/material";
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, CircularProgress } from "@mui/material";
 
 export default function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setLoading(true);
+    setError(null); // Reset previous errors
 
     const formData = new FormData(event.currentTarget);
     const data = {
@@ -19,24 +21,30 @@ export default function ContactForm() {
       message: formData.get("message") as string,
     };
 
-    const response = await fetch("api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    try {
+      const response = await fetch("api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    if (response.ok) {
-      console.log("Message sent successfully");
-      setLoading(false);
-      setModalIsOpen(true);
-      // reset the form using the ref
-      if (formRef.current) {
-        formRef.current.reset();
+      if (response.ok) {
+        console.log("Message sent successfully");
+        setLoading(false);
+        setModalIsOpen(true);
+        // reset the form using the ref
+        if (formRef.current) {
+          formRef.current.reset();
+        }
+      } else {
+        setError("Error sending message. Please try again later.");
+        setLoading(false);
       }
-    } else {
-      console.log("Error sending message");
+    } catch (error) {
+      console.error(error);
+      setError("Network error. Please check your internet connection.");
       setLoading(false);
     }
   }
@@ -46,7 +54,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="mx-5 ">
+    <div className="mx-5">
       <form onSubmit={handleSubmit} ref={formRef}>
         <div className="w-full flex flex-col my-4">
           <label className="font-bold text-white" htmlFor="name">
@@ -96,14 +104,13 @@ export default function ContactForm() {
           disabled={loading}
           className="px-4 py-2 w-40 bg-gray-700 hover:bg-secondary hover:bg-opacity-50 disabled:bg-gray-400 disabled:text-gray-100 text-white font-medium mt-4 transition duration-200 ease-in-out"
         >
-          Send Message
+          {loading ? <CircularProgress size={24} color="inherit" /> : "Send Message"}
         </button>
-
       </form>
-      <Dialog
-        open={modalIsOpen}
-        onClose={closeModal}
-      >
+
+      {error && <div className="text-red-500 mt-4">{error}</div>}
+
+      <Dialog open={modalIsOpen} onClose={closeModal}>
         <DialogTitle>Thank You!</DialogTitle>
         <DialogContent>
           <DialogContentText>
