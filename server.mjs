@@ -16,9 +16,9 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
   const server = express();
 
-  // Proxy API requests to the backend server (replace with actual backend URL)
+  // Proxy API requests to the backend server (replace with actual backend URL from .env)
   server.use('/api', createProxyMiddleware({
-    target: 'http://fix.ambeautyboutique.com', // Replace with actual API URL
+    target: process.env.API_URL, // Using API URL from environment variable
     changeOrigin: true,
     logLevel: 'debug',  // Log proxy actions
   }));
@@ -28,6 +28,12 @@ app.prepare().then(() => {
     const parsedUrl = parse(req.url, true);
     console.log(`Request received: ${req.url}`);
     handle(req, res, parsedUrl);
+  });
+
+  // Handle errors gracefully
+  server.use((err, req, res, next) => {
+    console.error('Server error:', err);
+    res.status(500).send('Something went wrong');
   });
 
   // Start the server
