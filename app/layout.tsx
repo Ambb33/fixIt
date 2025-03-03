@@ -1,8 +1,8 @@
 import "@/styles/globals.css";
-import { Footer, Hero, Navbar } from "@components";
-import styles from "@styles/style";
+import ClientRoot from "@/ClientRoot";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "fixIt",
   description:
     "Fix It! offers fast, reliable computer repair and technical support for private clients. From troubleshooting to network setups, we provide personalized tech solutions you can trust.",
@@ -16,20 +16,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
-        <div className="bg-primary w-full overflow-hidden">
-          <Navbar />
-          <div className={`bg-primary ${styles.flexStart}`}>
-            <div className={`${styles.boxWidth}`}>
-              {/* Ensure that children are properly rendered */}
-              {children || "No content available"}
-            </div>
-          </div>
-          <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>
-            <div className={`${styles.boxWidth}`}>
-              <Footer />
-            </div>
-          </div>
-        </div>
+        <ClientRoot>{children}</ClientRoot>
       </body>
     </html>
   );
