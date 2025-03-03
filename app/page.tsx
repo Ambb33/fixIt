@@ -5,14 +5,19 @@ import { Hero, Stats, Business, Billing, CardDeal, CTA } from "@/components";
 
 const Home: React.FC = () => {
   const [showButton, setShowButton] = useState(false);
+
+  // Initialize the isClient state to ensure client-side rendering
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    // Set isClient to true to confirm we are in the client environment
     setIsClient(true);
   }, []);
 
   useEffect(() => {
+    // Only add the scroll event listener when the component is client-side
     if (!isClient) return;
+    
     const handleScroll = () => {
       if (window.scrollY > 300) {
         setShowButton(true);
@@ -26,14 +31,15 @@ const Home: React.FC = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [isClient]);
+  }, [isClient]); // Dependency array now only includes isClient
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // Ensure nothing is rendered on SSR
   if (!isClient) {
-    return null; // Prevent SSR rendering of this component
+    return null; // This prevents rendering on the server side
   }
 
   return (
