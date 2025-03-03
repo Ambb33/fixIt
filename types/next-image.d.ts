@@ -2,7 +2,7 @@ declare module 'next/image' {
   import * as React from 'react';
 
   export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
-    src: string | { src: string };
+    // src: string | { src: string };
     width?: number | string;
     height?: number | string;
     layout?: 'fill' | 'fixed' | 'intrinsic' | 'responsive';
