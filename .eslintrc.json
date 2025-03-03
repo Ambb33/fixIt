@@ -4,7 +4,9 @@
     "next/typescript"
   ],
   "rules": {
-    "import/no-unresolved": "error",
+    "import/no-unresolved": [2, { "ignore": ["^@/"] }],
+  "import/no-named-as-default": 2,
+  "import/named": 2,
     "react/react-in-jsx-scope": "off"
   }
 }
