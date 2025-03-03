@@ -1,4 +1,4 @@
-import { apple, bill, google } from "@/public/assets";
+import { bill } from "@/public/assets";
 import styles, { layout } from "@/styles/style";
 import Image from "next/image";
 import { billingText } from "@/constants";

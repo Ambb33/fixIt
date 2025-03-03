@@ -1,5 +1,5 @@
-"use client"
-import React, { useState } from "react";
+"use client";
+import React, { useState, useCallback } from "react";
 import styles, { layout } from "@/styles/style";
 import { features, businessText } from "@/constants";
 import Image from "next/image";
@@ -25,20 +25,19 @@ const FeaturesCard: React.FC<FeatureCardProps> = ({ icon, title, content, index 
 const Business: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const toggleVisibility = () => {
-    setIsVisible(prevState => !prevState);
-  };
+  const toggleVisibility = useCallback(() => {
+    setIsVisible((prev) => !prev);
+  }, []);
 
   return (
-    <section id="features" className={`${layout.section}`}>
+    <section id="features" className={layout.section}>
       <div className={layout.sectionInfo}>
-        <h2 className={styles.heading2}>
-          {businessText.heading}
-        </h2>
-        <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-          {businessText.paragraph}
-        </p>
-        <ContactWrapper/>
+        <h2 className={styles.heading2}>{businessText.heading}</h2>
+        <p className={`${styles.paragraph} max-w-[470px] mt-5`}>{businessText.paragraph}</p>
+        <ContactWrapper />
+        <button onClick={toggleVisibility} className="mt-4 p-2 bg-blue-500 text-white rounded">
+          Toggle Content
+        </button>
         {isVisible && (
           <div>
             <p>Your toggled content here</p>

@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript"
+  ],
+  "rules": {
+    "import/no-unresolved": "error",
+    "react/react-in-jsx-scope": "off"
+  }
+}

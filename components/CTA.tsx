@@ -9,8 +9,8 @@ const CTA: React.FC = () => (
             </h2>
             <div className={`${styles.paragraph}  mt-5`}>
                 <p>Need help with tech issues? </p>
-                <p>We've got you covered! Our expert team is here to keep you connected and solve any technical problems effortlessly. Don’t waste another moment—reach out to us now.</p>
-                <p> Fill in the contact form, and we'll get back to you with the support you need.</p>
+                <p>We&apos;ve got you covered! Our expert team is here to keep you connected and solve any technical problems effortlessly. Don&apos;t waste another moment—reach out to us now.</p>
+                <p> Fill in the contact form, and we&apos;ll get back to you with the support you need.</p>
                 <p> Your seamless tech experience starts here!
                 </p>
             </div>
