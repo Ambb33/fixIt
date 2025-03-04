@@ -10,7 +10,8 @@
     "stop": "pm2 stop all",
     "clean": "rmdir /s /q .next && npm cache clean --force",
     "rebuild": "npm run stop && npm run clean && npm install && npm run build",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:debug": "NEXT_DEBUG=true npm run build"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",

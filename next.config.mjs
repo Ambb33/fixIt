@@ -1,4 +1,3 @@
-import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
 
 const nextConfig = {
   output: "standalone",
@@ -12,10 +11,10 @@ const nextConfig = {
     config.resolve.modules = ["node_modules"];
 
     // Case-sensitive paths
-    config.plugins.push(new CaseSensitivePathsPlugin());
+    // config.plugins.push(new CaseSensitivePathsPlugin());
 
     // Disable Webpack caching (try this if the issue persists)
-    config.cache = false;
+    // config.cache = false;
 
     return config;
   },
