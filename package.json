@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node server.mjs",
     "build": "next build ",
-    "start": "node server.mjs",
+    "start": "node .next/standalone/server.js",
     "stop": "powershell -Command \"Stop-Process -Id (Get-NetTCPConnection -LocalPort 3000).OwningProcess\"",
     "clean": "rmdir /s /q .next && npm cache clean --force",
     "rebuild": "npm run clean && npm install && npm run build",

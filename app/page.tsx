@@ -6,41 +6,22 @@ import { Hero, Stats, Business, Billing, CardDeal, CTA } from "@/components";
 
 const Home: React.FC = () => {
   const [showButton, setShowButton] = useState(false);
-  const [isClient, setIsClient] = useState(false); // To check if we are on the client side
 
   useEffect(() => {
-    // Set the client-side flag when the component mounts
-    setIsClient(true);
-
-    // Function to handle scroll event
     const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowButton(true);
-      } else {
-        setShowButton(false);
-      }
+      setShowButton(window.scrollY > 300);
     };
 
-    // Attach the event listener on mount
-    if (isClient) {
-      window.addEventListener("scroll", handleScroll);
-    }
-
-    // Cleanup the event listener when the component unmounts
+    window.addEventListener("scroll", handleScroll);
+    
     return () => {
-      if (isClient) {
-        window.removeEventListener("scroll", handleScroll);
-      }
+      window.removeEventListener("scroll", handleScroll);
     };
-  }, [isClient]); // Run the effect only once when client-side is ready
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
-  if (!isClient) {
-    return null; // Prevent rendering during SSR
-  }
 
   return (
     <>

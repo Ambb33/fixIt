@@ -1,18 +1,27 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, CircularProgress } from "@mui/material";
+import ContactWrapper from "./ContactWrapper";
 
 export default function ContactForm() {
-  const [loading, setLoading] = useState(false);
+  const isClient = typeof window !== "undefined"; // Prevent SSR issues
+  const [loading, setLoading] = useState(isClient ? false : undefined);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
+  useEffect(() => {
+    if (!isClient) return;
+    setLoading(false);
+  }, [isClient]);
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (!isClient) return;
+    
     setLoading(true);
-    setError(null); // Reset previous errors
+    setError(null);
 
     const formData = new FormData(event.currentTarget);
     const data = {
@@ -22,7 +31,7 @@ export default function ContactForm() {
     };
 
     try {
-      const response = await fetch("api/contact", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,19 +41,15 @@ export default function ContactForm() {
 
       if (response.ok) {
         console.log("Message sent successfully");
-        setLoading(false);
         setModalIsOpen(true);
-        // reset the form using the ref
-        if (formRef.current) {
-          formRef.current.reset();
-        }
+        formRef.current?.reset();
       } else {
         setError("Error sending message. Please try again later.");
-        setLoading(false);
       }
     } catch (error) {
       console.error(error);
       setError("Network error. Please check your internet connection.");
+    } finally {
       setLoading(false);
     }
   }
@@ -55,6 +60,7 @@ export default function ContactForm() {
 
   return (
     <div className="mx-5">
+      <ContactWrapper />
       <form onSubmit={handleSubmit} ref={formRef}>
         <div className="w-full flex flex-col my-4">
           <label className="font-bold text-white" htmlFor="name">

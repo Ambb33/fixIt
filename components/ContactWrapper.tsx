@@ -1,16 +1,22 @@
-"use client";
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ContactForm from './ContactForm';
 import styles from '@/styles/style';
 
 const ContactWrapper: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    // This ensures that the code inside will only run on the client
+    setIsClient(true);
+  }, []);
 
   const toggleOverlay = () => {
     setIsOpen(!isOpen);
   };
+
+  if (!isClient) return null; // Return nothing if it's server-side
 
   return (
     <div className={`w-full p-6 ${styles.paddingX}`}>
