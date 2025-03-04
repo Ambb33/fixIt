@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useCallback } from "react";
+
+import React, { useState } from "react";
 import styles, { layout } from "@/styles/style";
 import { features, businessText } from "@/constants";
 import Image from "next/image";
@@ -25,9 +26,10 @@ const FeaturesCard: React.FC<FeatureCardProps> = ({ icon, title, content, index 
 const Business: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const toggleVisibility = useCallback(() => {
+  // Toggle visibility of content
+  const toggleVisibility = () => {
     setIsVisible((prev) => !prev);
-  }, []);
+  };
 
   return (
     <section id="features" className={layout.section}>
@@ -39,7 +41,7 @@ const Business: React.FC = () => {
           Toggle Content
         </button>
         {isVisible && (
-          <div>
+          <div className="mt-4">
             <p>Your toggled content here</p>
           </div>
         )}

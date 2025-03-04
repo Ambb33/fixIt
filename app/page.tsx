@@ -1,4 +1,5 @@
-"use client";
+"use client";  // Ensure this component is client-side
+
 import { useState, useEffect } from "react";
 import styles from "@/styles/style";
 import { Hero, Stats, Business, Billing, CardDeal, CTA } from "@/components";
@@ -6,18 +7,8 @@ import { Hero, Stats, Business, Billing, CardDeal, CTA } from "@/components";
 const Home: React.FC = () => {
   const [showButton, setShowButton] = useState(false);
 
-  // Initialize the isClient state to ensure client-side rendering
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    // Set isClient to true to confirm we are in the client environment
-    setIsClient(true);
-  }, []);
-
   useEffect(() => {
     // Only add the scroll event listener when the component is client-side
-    if (!isClient) return;
-    
     const handleScroll = () => {
       if (window.scrollY > 300) {
         setShowButton(true);
@@ -26,21 +17,22 @@ const Home: React.FC = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // Attach the event listener on mount
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", handleScroll);
+    }
 
+    // Cleanup the event listener when the component unmounts
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("scroll", handleScroll);
+      }
     };
-  }, [isClient]); // Dependency array now only includes isClient
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
-  // Ensure nothing is rendered on SSR
-  if (!isClient) {
-    return null; // This prevents rendering on the server side
-  }
 
   return (
     <>
