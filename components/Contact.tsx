@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ButtonProps } from "@types";
-import ContactForm from './ContactForm';
+import ContactForm from '@/components/ContactForm';
 
 const Contact: React.FC<ButtonProps> = ({ }) => {
   

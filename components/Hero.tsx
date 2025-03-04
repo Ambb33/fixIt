@@ -1,7 +1,7 @@
 "use client";
 import styles from "@/styles/style";
 import { robot } from "@/public/assets";
-import GetStarted from "./GetStarted";
+import GetStarted from "@/components/GetStarted";
 import Image from "next/image";
 import { heroData } from "@/constants";
 

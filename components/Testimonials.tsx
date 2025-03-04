@@ -1,7 +1,7 @@
 "use client";
 import { feedback } from "@/constants";
 import styles from "@/styles/style";
-import FeedbackCard from "./FeedbackCard";
+import FeedbackCard from "@/components/FeedbackCard";
 const Testimonials: React.FC = () => (
   <section
     id="clients"

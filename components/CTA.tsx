@@ -1,6 +1,6 @@
 "use client";
 import styles from "@/styles/style";
-import ContactWrapper from "./ContactWrapper";
+import ContactWrapper from "@/components/ContactWrapper";
 
 const CTA: React.FC = () => (
   <section

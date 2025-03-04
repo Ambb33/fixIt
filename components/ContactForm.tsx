@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, CircularProgress } from "@mui/material";
-import ContactWrapper from "./ContactWrapper";
+import ContactWrapper from "@/components/ContactWrapper";
 
 export default function ContactForm() {
   const isClient = typeof window !== "undefined"; // Prevent SSR issues
