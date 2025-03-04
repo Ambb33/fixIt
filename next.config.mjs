@@ -1,7 +1,7 @@
-import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
+import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin";
 
 const nextConfig = {
-  output: 'standalone',
+  output: "standalone",
   reactStrictMode: true,
   trailingSlash: true,
   compress: true,
@@ -9,12 +9,12 @@ const nextConfig = {
   webpack: (config) => {
     config.resolve.alias = { ...config.resolve.alias };
     config.resolve.symlinks = false;
-    config.resolve.modules = ['node_modules'];
-    
-    // Enforce strict case-sensitive file paths
+    config.resolve.modules = ["node_modules"];
+
+    // Case-sensitive paths
     config.plugins.push(new CaseSensitivePathsPlugin());
-    
-    // Disable Webpack cache to prevent build issues
+
+    // Disable Webpack caching (try this if the issue persists)
     config.cache = false;
 
     return config;
@@ -22,13 +22,10 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/api/:path*',
-        destination: 'http://fix.ambeautyboutique.com/api/:path*', // Replace with actual backend URL
+        source: "/api/:path*",
+        destination: "http://fix.ambeautyboutique.com/api/:path*", // Replace with actual backend URL
       },
     ];
-  },
-  experimental: {
-    appDir: true, // Ensure App Router support
   },
 };
 
