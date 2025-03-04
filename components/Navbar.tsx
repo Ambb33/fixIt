@@ -10,11 +10,11 @@ const Navbar: React.FC = () => {
   const [toggle, setToggle] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isScrollingUp, setIsScrollingUp] = useState(false);
-  const [isClient, setIsClient] = useState(false);
+  const [isClient, setIsClient] = useState(false); // This is used to check for client-side
   const controls = useAnimation();
 
   useEffect(() => {
-    setIsClient(true);
+    setIsClient(true); // Update to true after client load
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -53,7 +53,7 @@ const Navbar: React.FC = () => {
   }, [lastScrollY, isScrollingUp, controls, isClient]);
 
   if (!isClient) {
-    return null;
+    return null; // Ensures no rendering until client-side is ready
   }
 
   return (
@@ -98,7 +98,7 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       </motion.header>
-      <div className="h-[80px]"></div> {/* Creëert ruimte voor de navbar */}
+      <div className="h-[80px]"></div> {/* Creates space for the navbar */}
     </div>
   );
 };
