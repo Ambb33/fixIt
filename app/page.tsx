@@ -1,5 +1,3 @@
-"use client";  // Ensure this component is client-side
-
 import { useState, useEffect } from "react";
 import styles from "@/styles/style";
 import { Hero, Stats, Business, Billing, CardDeal, CTA } from "@/components";
@@ -8,18 +6,24 @@ const Home: React.FC = () => {
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
+    console.log("useEffect triggered: Adding scroll event listener");
+
     const handleScroll = () => {
+      console.log("Scroll position:", window.scrollY);
       setShowButton(window.scrollY > 300);
     };
 
     window.addEventListener("scroll", handleScroll);
-    
+
+    // Cleanup
     return () => {
+      console.log("useEffect cleanup: Removing scroll event listener");
       window.removeEventListener("scroll", handleScroll);
     };
   }, []); // Empty dependency array ensures this runs only once on mount
 
   const scrollToTop = () => {
+    console.log("Scroll to top triggered");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
