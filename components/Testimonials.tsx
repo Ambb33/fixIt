@@ -1,3 +1,4 @@
+"use client";
 import { feedback } from "@/constants";
 import styles from "@/styles/style";
 import FeedbackCard from "./FeedbackCard";

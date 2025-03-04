@@ -1,3 +1,4 @@
+"use client";
 import { quotes } from "@/public/assets";
 import { FeedBackProps } from "@types";
 import Image from "next/image";

@@ -1,3 +1,4 @@
+"use client";
 import { card } from "@/public/assets";
 import styles, { layout } from "@/styles/style";
 import Image from "next/image";
@@ -16,7 +17,12 @@ const CardDeal: React.FC = () => (
       <ContactWrapper />
     </div>
     <div className={layout.sectionImg}>
-      <Image src={card} alt="card" className="w-[100%] h-[100%]" />
+      <Image
+        src={card}
+        alt="Credit card illustration"
+        className="w-[100%] h-[100%]"
+        layout="responsive" // Optionally use responsive layout for better control
+      />
     </div>
   </section>
 );

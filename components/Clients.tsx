@@ -1,3 +1,4 @@
+"use client";
 import { clients } from "@/constants";
 import styles from "@/styles/style";
 import Image from "next/image";

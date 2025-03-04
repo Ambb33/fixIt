@@ -1,12 +1,10 @@
-// app/not-found.tsx
-"use client"; // If you use client-side hooks here
-import Link from "next/link";
+"use client";
 
 export default function NotFound() {
   return (
-    <div>
-      <h1>Page Not Found</h1>
-      <Link href="/">Go back to Home</Link>
+    <div style={{ textAlign: "center", padding: "2rem" }}>
+      <h1>404 - Page Not Found</h1>
+      <p>Sorry, the page you are looking for does not exist.</p>
     </div>
   );
 }
