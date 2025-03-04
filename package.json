@@ -8,7 +8,7 @@
     "build": "next build ",
     "start": "node server.mjs",
     "stop": "powershell -Command \"Stop-Process -Id (Get-NetTCPConnection -LocalPort 3000).OwningProcess\"",
-    "clean": "rm -rf .next node_modules/.cache && npm cache clean --force",
+    "clean": "rmdir /s /q .next && npm cache clean --force",
     "rebuild": "npm run clean && npm install && npm run build",
     "lint": "next lint"
   },
