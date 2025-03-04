@@ -1,29 +1,31 @@
+"use client";  // Ensure this is at the top of your page.tsx file
+
 import { useState, useEffect } from "react";
 import styles from "@/styles/style";
-import { Hero, Stats, Business, Billing, CardDeal, CTA } from "@/components";
+import { Stats, Business, Billing, CardDeal, CTA } from "@/components";
+
+import dynamic from 'next/dynamic';
+
+// Dynamically import components with ssr: false to ensure they are only rendered client-side
+const DynamicHero = dynamic(() => import('@/components/Hero'), { ssr: false });
+const DynamicStats = dynamic(() => import('@/components/Stats'), { ssr: false });
 
 const Home: React.FC = () => {
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
-    console.log("useEffect triggered: Adding scroll event listener");
-
     const handleScroll = () => {
-      console.log("Scroll position:", window.scrollY);
       setShowButton(window.scrollY > 300);
     };
 
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup
     return () => {
-      console.log("useEffect cleanup: Removing scroll event listener");
       window.removeEventListener("scroll", handleScroll);
     };
   }, []); // Empty dependency array ensures this runs only once on mount
 
   const scrollToTop = () => {
-    console.log("Scroll to top triggered");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -31,12 +33,12 @@ const Home: React.FC = () => {
     <>
       <div className={`bg-primary ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
-          <Hero />
+          <DynamicHero />
         </div>
       </div>
       <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
-          <Stats />
+          <DynamicStats />
           <Business />
           <Billing />
           <CardDeal />
