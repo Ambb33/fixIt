@@ -10,9 +10,12 @@ const nextConfig = {
     config.resolve.alias = { ...config.resolve.alias };
     config.resolve.symlinks = false;
     config.resolve.modules = ['node_modules'];
-
+    
     // Enforce strict case-sensitive file paths
     config.plugins.push(new CaseSensitivePathsPlugin());
+    
+    // Disable Webpack cache to prevent build issues
+    config.cache = false;
 
     return config;
   },
@@ -23,6 +26,9 @@ const nextConfig = {
         destination: 'http://fix.ambeautyboutique.com/api/:path*', // Replace with actual backend URL
       },
     ];
+  },
+  experimental: {
+    appDir: true, // Ensure App Router support
   },
 };
 
