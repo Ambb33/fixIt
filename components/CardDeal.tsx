@@ -1,3 +1,4 @@
+"use client";
 import { card } from "@/public/assets";
 import styles, { layout } from "@/styles/style";
 import Image from "next/image";

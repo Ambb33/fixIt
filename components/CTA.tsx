@@ -1,3 +1,4 @@
+"use client";
 import styles from "@/styles/style";
 import ContactWrapper from "./ContactWrapper";
 
