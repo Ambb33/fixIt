@@ -1,6 +1,4 @@
-// app/not-found.tsx
-"use client"; // Ensures this is rendered client-side
-
+"use client";
 import Link from "next/link";
 
 export default function NotFound() {
