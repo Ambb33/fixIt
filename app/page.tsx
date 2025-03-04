@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import styles from "@/styles/style";
-import { Stats, Business, Billing, CardDeal, CTA } from "@/components";
+import { Business, Billing, CardDeal, CTA } from "@/components";
 
 import dynamic from 'next/dynamic';
 
