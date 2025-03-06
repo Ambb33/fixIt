@@ -6,12 +6,12 @@
   "scripts": {
     "dev": "node server.mjs",
     "build": "next build ",
-    "start": "pm2 start pm2.json && pm2 save",
+    "start": "node .next/standalone/server.js",
     "stop": "pm2 stop all",
     "clean": "rmdir /s /q .next && npm cache clean --force",
     "rebuild": "npm run stop && npm run clean && npm install && npm run build",
     "lint": "next lint",
-    "build:debug": "NEXT_DEBUG=true npm run build"
+    "build:debug": "cross-env NEXT_DEBUG=true npm run build"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
@@ -36,6 +36,7 @@
     "@types/node": "^22.13.9",
     "@types/react-modal": "^3.16.3",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
+    "cross-env": "^7.0.3",
     "eslint": "9.21.0",
     "eslint-config-next": "15.2.0"
   }
